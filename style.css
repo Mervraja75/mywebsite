@@ -1,0 +1,91 @@
+/* General Styling */
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f3; /* Light gray background */
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(90deg, #0078d7, #005bb5); /* Gradient effect */
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #444;
+    padding: 0.5rem 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #0078d7;
+}
+
+/* Main Content */
+main {
+    padding: 2rem; /* More padding for better readability */
+    background-color: white;
+    border-radius: 8px; /* Smooth corners */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+    max-width: 800px;
+    margin: 2rem auto; /* Center the content */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #333;
+    color: white;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1); /* Shadow above footer */
+    font-size: 12px;
+}
+
+/* About Me Section */
+#about {
+    background-color: #f9f9f9; /* Light background */
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 2rem auto;
+    max-width: 800px; /* Center the section */
+}
+
+#about h2 {
+    font-size: 24px;
+    color: #0078d7; /* Matching color theme */
+    margin-bottom: 1rem;
+}
+
+#about p {
+    font-size: 14px;
+    line-height: 1.6; /* Improve readability */
+    color: #555; /* Softer text color */
+}
