@@ -1,74 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Coding Projects</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Coding Projects</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <header>
-        <h1>Welcome to My Coding Projects</h1>
-    </header>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hi, I'm Mervin Raja, a beginner web developer passionate about coding and learning new technologies. 
-            This website showcases my coding projects and progress as I grow my skills. 
-        </p>
-    
-    </section>
-    <main>
-        <p>This is where I showcase my coding projects.</p>
-    </main>
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-list">
-            <!-- Project 1: Tic Tac Slide Game -->
-            <div class="project-item">
-                <img src="app_icon.png" alt="Tic Tac Slide Game Screenshot">
-                <h3>Tic Tac Slide Game</h3>
-                <p>A fun twist on the classic Tic Tac Toe game with sliding mechanics for added strategy.</p>
-                <p><strong>Technologies:</strong> Java, Android SDK</p>
-                <a href="https://github.com/Mervraja75/Tic-Tac-Slide.git" target="_blank">View on GitHub</a>
-            </div>
-            
-            <!-- Project 2: Study Sync App -->
-            <div class="project-item">
-                <img src="study_sync.png" alt="Study Sync App Screenshot">
-                <h3>Study Sync App</h3>
-                <p>A time management app to help students efficiently plan and track their study sessions.</p>
-                <p><strong>Technologies:</strong> React Native, Firebase</p>
-                <a href="https://github.com/Mervraja75/study-sync" target="_blank">View on GitHub</a>
-            </div>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
+  <header>
+    <h1>Welcome to My Coding Projects</h1>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hi, I'm Mervin Raja, a beginner web developer passionate about coding and learning new technologies.
+        This website showcases my coding projects and progress as I grow my skills.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="project-list">
+        <!-- Project 1 -->
+        <div class="project-item">
+          <img src="app_icon.png" alt="Tic Tac Slide Game Screenshot" />
+          <h3>Tic Tac Slide Game</h3>
+          <p>A fun twist on the classic Tic Tac Toe game with sliding mechanics for added strategy.</p>
+          <p><strong>Technologies:</strong> Java, Android SDK</p>
+          <a href="https://github.com/Mervraja75/Tic-Tac-Slide.git" target="_blank">View on GitHub</a>
         </div>
+
+        <!-- Project 2 -->
+        <div class="project-item">
+          <img src="study_sync.png" alt="Study Sync App Screenshot" />
+          <h3>Study Sync App</h3>
+          <p>A time management app to help students efficiently plan and track their study sessions.</p>
+          <p><strong>Technologies:</strong> React Native, Firebase</p>
+          <a href="https://github.com/Mervraja75/study-sync" target="_blank">View on GitHub</a>
+        </div>
+      </div>
     </section>
+
     <section id="contact">
-        <h2>Contact Me</h2>
-        <form action="https://formspree.io/f/{your-form-id}" method="POST">
-            <label for="Mervin Raja">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-    
-            <label for="merv.raja@gmail.com">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Your email" required>
-    
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
-    
-            <button type="submit">Send Message</button>
-        </form>
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
     </section>
-    <footer>
-        <p>Created by Mervin Raja</p>
-    </footer>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mervin Raja. All rights reserved.</p>
+  </footer>
 </body>
 </html>
