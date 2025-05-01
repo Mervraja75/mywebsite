@@ -12,7 +12,7 @@ body {
 header {
     background: linear-gradient(90deg, #0f2027, #07151a, #2c5364);
     color: white;
-    padding: 3rem 0; /* Increased padding to fit logo and text better */
+    padding: 5rem 0; /* Increased padding to fit logo and text better */
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
     min-height: 150px; /* Increased height to accommodate the image */
