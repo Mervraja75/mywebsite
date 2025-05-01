@@ -15,7 +15,7 @@ header {
     padding: 5rem 0; /* Increased padding to fit logo and text better */
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-    min-height: 180px; /* Increased height to accommodate the image */
+    min-height: 150px; /* Increased height to accommodate the image */
 }
 
 .header-container {
@@ -28,7 +28,7 @@ header {
 
 .logo {
     width: 100%; /* Makes logo responsive */
-    max-width: 450px; /* Set maximum size for the logo */
+    max-width: 150%; /* Set maximum size for the logo */
     height: auto; /* Maintain aspect ratio */
 }
 
