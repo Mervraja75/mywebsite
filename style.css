@@ -196,3 +196,13 @@ form.contact-form button:hover {
     background-color: #4ac7f7;
     box-shadow: 0 0 10px #4ac7f7;
 }
+
+.project-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.project-item a:hover {
+  color: #61dafb;
+  text-shadow: 0 0 8px #61dafb;
+}
