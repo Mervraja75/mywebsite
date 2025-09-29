@@ -90,7 +90,7 @@ footer {
 .profile-pic {
   width: 150px;
   height: 150px;
-  border-radius: 50%; /* makes it circular */
+  border-radius: 80%; /* makes it circular */
   object-fit: cover;
   margin-bottom: 1rem;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
