@@ -7,58 +7,146 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="brand" href="#home">Mervin Raja</a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About Me</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-<section id="home">
-  <header>
-    <h1>Welcome to My Coding Projects</h1>
-  </header>
-</section>
-  
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to My Coding Projects</h1>
+      <p class="hero-subtitle">
+        Mobile development • Backend systems • Software engineering
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">See Projects</a>
+        <a class="btn ghost" href="#contact">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
   <main>
-    <section id="about">
+    <section id="about" class="card-section">
       <h2>About Me</h2>
-       <img src="mervin.png" alt="Photo of Mervin Raja" class="profile-pic" />
-      <p>
-        <p>I’m Mervin Raja, a Computer Science graduate passionate about mobile development, backend systems, and software engineering.
-            I enjoy creating applications and services that bring together reliability, functionality, and user-friendly design.
-            With experience in IT Technical Support and a strong foundation in software development, my goal is to grow as a 
-            Mobile and Backend Developer and contribute to building innovative solutions that make a real impact.</p>
-        </p>
+      <img src="mervin.png" alt="Photo of Mervin Raja" class="profile-pic" />
+      <h4>
+        I’m Mervin Raja, a Computer Science graduate passionate about mobile development,
+        backend systems, and software engineering. I enjoy creating applications and services
+        that bring together reliability, functionality, and user-friendly design.
+        With experience in IT Technical Support and a strong foundation in software development,
+        my goal is to grow as a Mobile and Backend Developer and contribute to building innovative
+        solutions that make a real impact.
+      </h4>
     </section>
 
-    <section id="projects">
-  <h2>My Projects</h2>
-  <div class="project-list">
-    <!-- Project 1 -->
-    <div class="project-item">
-      <img src="appstore.png" alt="Tic Tac Slide Game Poster" />
-      <h3>Tic Tac Slide Game</h3>
-      <p>A fun twist on the classic Tic Tac Toe game with sliding mechanics for added strategy.</p>
-      <p><strong>Technologies:</strong> Java, Android SDK</p>
-      <a href="https://github.com/Mervraja75/Tic-Tac-Slide" target="_blank">View on GitHub</a>
-    </div>
+    <section id="projects" class="projects">
+      <h2>My Projects</h2>
 
-    <!-- Meteor Run Game -->
-    <div class="project-item">
-      <img src="meteorrun.png" alt="Meteor Run Game Poster" />
-      <h3>Meteor Run</h3>
-      <p>A retro space shooter game where players dodge asteroids and blast meteors.</p>
-      <p><strong>Technologies:</strong> Unity, C#, 2D Pixel Art</p>
-      <a href="https://github.com/Mervraja75/meteor-run.git" target="_blank">View on GitHub</a>
-    </div>
-  </div>
-</section>
+      <div class="project-list">
+        <article class="project-item">
+          <img src="appstore.png" alt="Tic Tac Slide Game Poster" />
+          <h3>Tic Tac Slide Game App</h3>
+          <p>A fun twist on the classic Tic Tac Toe game with sliding mechanics for added strategy.</p>
+          <p><strong>Technologies:</strong> Java, Android SDK</p>
+          <a href="https://github.com/Mervraja75/Tic-Tac-Slide" target="_blank" rel="noopener noreferrer">
+            View on GitHub →
+          </a>
 
-    <section id="contact">
+          <p>
+            <strong>Demo:</strong>
+            <span class="coming-soon">Video (Coming Soon)</span>
+          </p>
+          <video controls preload="metadata" class="project-video">
+            <source src="tictacslide.mp4" type="video/mp4" /> 
+            Your browser does not support the video tag.
+          </video>
+        </article>
+
+        <article class="project-item">
+          <img src="meteorrun.png" alt="Meteor Run Game Poster" />
+          <h3>Meteor Run Game</h3>
+          <p>A retro space shooter game where players dodge asteroids and blast meteors.</p>
+          <p><strong>Technologies:</strong> Unity, C#, 2D Pixel Art</p>
+          <a href="https://github.com/Mervraja75/meteor-run.git" target="_blank" rel="noopener noreferrer">
+            View on GitHub →
+          </a>
+
+          <p>
+            <strong>Demo:</strong>
+            <span class="coming-soon">Video (Coming Soon)</span>
+          </p>
+          <video controls preload="metadata" class="project-video">
+            <source src="meteorrun.mp4" type="video/mp4" /> 
+            Your browser does not support the video tag.
+          </video>
+        </article>
+
+        <article class="project-item">
+          <img src="smartdesk.png" alt="SmartDesk AI IT Support App" />
+          <h3>SmartDesk App</h3>
+          <p>An AI-powered IT support application designed to assist users with
+             technical issues through intelligent automation and real-time responses.</p>
+          <h3>Technologies</h3>
+          <p><strong>Frontend :</strong> React Native, Expo, JavaScript </p>
+          <p><strong>Backend :</strong> Node.js, Express.js, Render</p>
+          <p><strong>AI Integration :</strong> OpenAI API (GPT-4o-mini) </p>
+          <a href="https://github.com/Mervraja75/smartdesk" target="_blank" rel="noopener noreferrer">
+            View on GitHub →
+          </a>
+
+          <p>
+            <strong>Demo:</strong>
+            <span class="coming-soon">Video (Coming Soon)</span>
+          </p>
+          <video controls preload="metadata" class="project-video">
+            <source src="smartdesk.mp4" type="video/mp4" /> 
+            Your browser does not support the video tag.
+          </video>
+        </article>
+
+        <article class="project-item">
+          <img src="smartdrainai.png" alt="SmartDrain AI Flood Monitoring System" />
+          <h3>SmartDrain AI Device</h3>
+          <p>
+            SmartDrain AI is a low-cost, sensor-based flood monitoring system that
+            provides real-time alerts and early warnings to help prevent urban and
+            rural flooding.
+          </p>
+          <p>
+          <strong>Technologies:</strong> IoT sensors, Raspberry Pi, Arduino, Wi-Fi & GSM connectivity</p>
+          <a href="#" class="coming-soon" aria-disabled="true">
+            GitHub (Coming Soon)
+          </a>
+
+          <p>
+            <strong>Demo:</strong>
+            <span class="coming-soon">Video (Coming Soon)</span>
+          </p>
+          <video controls preload="metadata" class="project-video">
+            <source src="smartdrainai.MOV" type="video/mp4" /> 
+            Your browser does not support the video tag.
+          </video>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="card-section">
       <h2>Contact Me</h2>
+
       <form action="https://formspree.io/f/xyzabcde" method="POST" class="contact-form">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -69,8 +157,8 @@
         <label for="message">Message:</label>
         <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
 
-
         <button type="submit">Send Message</button>
+        <p class="form-note">This form uses Formspree. You’ll receive messages in your email.</p>
       </form>
     </section>
   </main>
@@ -78,6 +166,40 @@
   <footer>
     <p>&copy; 2025 Mervin Raja. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector(".nav-toggle");
+    const links = document.querySelector(".nav-links");
+
+    toggle.addEventListener("click", () => {
+      const isOpen = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Close menu after clicking a link (mobile)
+    document.querySelectorAll(".nav-link").forEach(a => {
+      a.addEventListener("click", () => links.classList.remove("open"));
+    });
+
+    // Active section highlight on scroll
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const setActive = () => {
+      let current = "home";
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle("active", a.getAttribute("href") === "#" + current);
+      });
+    };
+
+    window.addEventListener("scroll", setActive);
+    setActive();
+  </script>
+
 </body>
 </html>
-
