@@ -8,14 +8,25 @@
 </head>
 <body>
 
- 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-inner">
       <a class="brand" href="#home">Mervin Raja</a>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
     </div>
   </nav>
 
-
+  <!-- HERO -->
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>Welcome to My Coding Projects</h1>
@@ -32,157 +43,183 @@
   </section>
 
   <main>
+
+    <!-- ABOUT -->
     <section id="about" class="card-section">
       <h2>About Me</h2>
-        <img src="mervin.png" alt="Photo of Mervin Raja" class="profile-pic" />
+      <img src="mervin.png" alt="Photo of Mervin Raja" class="profile-pic" />
 
-        <p style="color:#d0d6dc; line-height:1.7;">
-          <h2>Mervin Raja</h2>
-          Want to know more about me?
-        </p>
+      <h3 style="margin:0.5rem 0 0.25rem;">Mervin Raja</h3>
+      <p style="color:#d0d6dc; line-height:1.7;">
+        Want to know more about me?
+      </p>
 
       <a class="btn ghost" href="about.html">Click here</a>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="projects">
       <h2>My Projects</h2>
 
       <div class="project-list">
+
+        <!-- Tic Tac Slide -->
         <article class="project-item">
           <img src="appstore.png" alt="Tic Tac Slide Game Poster" />
           <h3>Tic Tac Slide Game App</h3>
-          <p>A fun twist on the classic Tic Tac Toe game with sliding mechanics for added strategy.</p>
-          <h3>Technologies : </h3> Java, Android SDK</p>
+          <p>A fun twist on the classic Tic Tac Toe game with sliding mechanics.</p>
+          <p><strong>Technologies:</strong> Java, Android SDK</p>
+
           <a href="https://github.com/Mervraja75/Tic-Tac-Slide" target="_blank" rel="noopener noreferrer">
             View on GitHub →
           </a>
 
-          <p>
-            <strong>Demo:</strong>
-            <span class="coming-soon">Video (Coming Soon)</span>
-          </p>
-          <video controls preload="metadata" class="project-video">
-            <source src="tictacslide.mp4" type="video/mp4" /> 
-            Your browser does not support the video tag.
-          </video>
+          <p><strong>Demo:</strong> <span class="coming-soon">Video (Coming Soon)</span></p>
+
+          <div class="video-wrapper">
+            <video controls playsinline preload="metadata">
+              <source src="tictacslide.mp4" type="video/mp4" />
+            </video>
+          </div>
         </article>
 
+        <!-- Meteor Run -->
         <article class="project-item">
           <img src="meteorrun.png" alt="Meteor Run Game Poster" />
           <h3>Meteor Run Game</h3>
-          <p>A retro space shooter game where players dodge asteroids and blast meteors.</p>
-          <h3>Technologies : </h3> Unity, C#, 2D Pixel Art</p>
+          <p>A retro space shooter where players dodge asteroids and blast meteors.</p>
+          <p><strong>Technologies:</strong> Unity, C#, 2D Pixel Art</p>
+
           <a href="https://github.com/Mervraja75/meteor-run.git" target="_blank" rel="noopener noreferrer">
             View on GitHub →
           </a>
 
-          <video controls preload="metadata" class="project-video">
-            <source src="meteorrun.mp4" type="video/mp4" /> 
-            Your browser does not support the video tag.
-          </video>
+          <div class="video-wrapper">
+            <video controls playsinline preload="metadata">
+              <source src="meteorrun.mp4" type="video/mp4" />
+            </video>
+          </div>
         </article>
 
+        <!-- SmartDesk -->
         <article class="project-item">
           <img src="smartdesk.png" alt="SmartDesk AI IT Support App" />
           <h3>SmartDesk App</h3>
-          <p>An AI-powered IT support application designed to assist users with
-             technical issues through intelligent automation and real-time responses.</p>
-          <h3>Technologies : </h3>
-          <p><strong>Frontend :</strong> React Native, Expo, JavaScript </p>
-          <p><strong>Backend :</strong> Node.js, Express.js, Render</p>
-          <p><strong>AI Integration :</strong> OpenAI API (GPT-4o-mini) </p>
+          <p>
+            An AI-powered IT support application that assists users through intelligent automation.
+          </p>
+
+          <p><strong>Frontend:</strong> React Native, Expo, JavaScript</p>
+          <p><strong>Backend:</strong> Node.js, Express.js, Render</p>
+          <p><strong>AI:</strong> OpenAI API (GPT-4o-mini)</p>
+
           <a href="https://github.com/Mervraja75/smartdesk" target="_blank" rel="noopener noreferrer">
             View on GitHub →
           </a>
 
-          <p>
-            <strong>Demo:</strong>
-            <span class="coming-soon">Video (Coming Soon)</span>
-          </p>
-          <video controls preload="metadata" class="project-video">
-            <source src="smartdesk.mp4" type="video/mp4" /> 
-            Your browser does not support the video tag.
-          </video>
+          <p><strong>Demo:</strong> <span class="coming-soon">Video (Coming Soon)</span></p>
+
+          <div class="video-wrapper">
+            <video controls playsinline preload="metadata">
+              <source src="smartdesk.mp4" type="video/mp4" />
+            </video>
+          </div>
         </article>
 
+        <!-- SmartDrain AI -->
         <article class="project-item">
           <img src="smartdrainai.png" alt="SmartDrain AI Flood Monitoring System" />
           <h3>SmartDrain AI Device</h3>
           <p>
-            SmartDrain AI is a low-cost, sensor-based flood monitoring system that
-            provides real-time alerts and early warnings to help prevent urban and
-            rural flooding.
+            A low-cost, sensor-based flood monitoring system with real-time alerts.
           </p>
-          <p>
-          <h3>Technologies : </h3> IoT sensors, Raspberry Pi, Arduino, Wi-Fi & GSM connectivity</p>
-          <a href="#" class="coming-soon" aria-disabled="true">
-            GitHub (Coming Soon)
-          </a>
 
-          <video controls preload="metadata" class="project-video">
-            <source src="smartdrainai.mp4" type="video/mp4" /> 
-            Your browser does not support the video tag.
-          </video>
+          <p><strong>Technologies:</strong> IoT sensors, Raspberry Pi, Arduino, Wi-Fi & GSM</p>
+
+          <a href="#" class="coming-soon">GitHub (Coming Soon)</a>
+
+          <div class="video-wrapper">
+            <video controls playsinline preload="metadata">
+              <source src="smartdrainai.mp4" type="video/mp4" />
+            </video>
+          </div>
         </article>
+
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="card-section">
       <h2>Contact Me</h2>
 
-      <form action="https://formspree.io/f/xyzabcde" method="POST" class="contact-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required />
+      <form id="contact-form" class="contact-form">
+        <label>Name:</label>
+        <input type="text" name="name" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Your email" required />
+        <label>Email:</label>
+        <input type="email" name="email" required>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+        <label>Message:</label>
+        <textarea name="message" rows="5" required></textarea>
 
         <button type="submit">Send Message</button>
-        <p class="form-note">This form uses Formspree. You’ll receive messages in your email.</p>
+        <p class="form-note" id="form-status"></p>
       </form>
     </section>
+
   </main>
 
   <footer>
     <p>&copy; 2025 Mervin Raja. All rights reserved.</p>
   </footer>
 
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
+  <!-- EmailJS + Mobile Nav -->
   <script>
-    /* Mobile nav toggle
+    /* ========== EMAILJS ========== */
+    emailjs.init("GZQQyPDThImAc3d_U");
+
+    const form = document.getElementById("contact-form");
+    const statusEl = document.getElementById("form-status");
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      statusEl.textContent = "Sending...";
+
+      emailjs.sendForm("service_yzb4g05", "template_k4qjyip", this)
+        .then(() => {
+          statusEl.textContent = "✅ Message sent successfully!";
+          form.reset();
+        })
+        .catch(() => {
+          statusEl.textContent = "❌ Failed to send. Please try again.";
+        });
+    });
+
+    /* ========== MOBILE NAV ========== */
     const toggle = document.querySelector(".nav-toggle");
     const links = document.querySelector(".nav-links");
 
     toggle.addEventListener("click", () => {
-      const isOpen = links.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
+      const open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open);
     });
 
-    // Close menu after clicking a link (mobile)
-    document.querySelectorAll(".nav-link").forEach(a => {
-      a.addEventListener("click", () => links.classList.remove("open"));
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
     });
 
-    // Active section highlight on scroll
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    const setActive = () => {
-      let current = "home";
-      sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        if (window.scrollY >= top) current = section.id;
-      });
-      navLinks.forEach(a => {
-        a.classList.toggle("active", a.getAttribute("href") === "#" + current);
-      });
-    };
-
-    window.addEventListener("scroll", setActive);
-    setActive();*/
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".nav-inner")) {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
   </script>
 
 </body>
