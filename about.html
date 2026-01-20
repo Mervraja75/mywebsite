@@ -33,6 +33,11 @@
           <div class="quiz-actions">
             <button id="nextBtn" class="btn primary" disabled>Next</button>
             <button id="tryAgainBtn" class="btn ghost" type="button" disabled>Try Again</button>
+
+            <!-- Only shows at game completion -->
+            <button id="restartBtn" class="btn ghost" type="button" style="display:none;">
+              Restart
+            </button>
           </div>
         </div>
 
@@ -53,7 +58,10 @@
 
   <script>
     // Quiz: retry same question until correct + show image on correct answer
-    // Improvement: remove Restart, add Try Again (shuffles options for same question)
+    // Improvements:
+    // - Try Again (shuffles options for same question)
+    // - Newest unlocked card stays at the top
+    // - On completion: hide Next/Try Again, show Restart only
     const questions = [
       {
         q: "Where am I from?",
@@ -61,10 +69,9 @@
         answer: "Malaysia",
         image: "malaysia.jpg",
         imageAlt: "Malaysia",
-        caption: "Malaysia 🇲🇾",
         unlock: {
           title: "Malaysia 🇲🇾",
-          text: "Malaysia is a culturally rich and diverse country in Southeast Asia, known for its blend of modern cities, strong technology growth, and multicultural society. Growing up in Malaysia shaped my adaptability, problem-solving mindset, and appreciation for working with people from different backgrounds."
+          text: "Malaysia is a culturally rich and diverse country in Southeast Asia, known for its blend of modern cities and multicultural society. Growing up in Malaysia shaped my adaptability, problem-solving mindset, and appreciation for working with people from different backgrounds."
         }
       },
       {
@@ -73,7 +80,6 @@
         answer: "All the above",
         image: "languages.jpg",
         imageAlt: "Languages",
-        caption: "English • Malay • Tamil",
         unlock: {
           title: "Languages I speak 🗣️",
           text: "I speak English, Malay, and Tamil. Being multilingual helps me communicate effectively with people from diverse backgrounds and work comfortably in multicultural environments."
@@ -85,7 +91,6 @@
         answer: "Horror",
         image: "horror.jpg",
         imageAlt: "Horror genre",
-        caption: "Horror 🎬",
         unlock: {
           title: "Favorite Movie Genre 🎬",
           text: "My favorite movie genre is horror. I enjoy the suspense, atmosphere, and storytelling that keep you on edge and make you think beyond the obvious."
@@ -93,14 +98,13 @@
       },
       {
         q: "What type of music do I enjoy the most?",
-        options: ["Pop music", "Heavy Metal", "Instrumental music", "No music at all"],
-        answer: "Instrumental music",
-        image: "instrumental.jpg",
-        imageAlt: "Instrumental music",
-        caption: "Instrumental & ambient 🎵",
+        options: ["Pop music", "Heavy Metal", "Movie Soundtracks", "No music at all"],
+        answer: "Movie Soundtracks",
+        image: "music.jpg",
+        imageAlt: "Movie Soundtracks",
         unlock: {
           title: "Favorite Music 🎵",
-          text: "I enjoy instrumental and ambient music — music without lyrics that emphasizes melody, atmosphere, and emotion. It creates a calm and immersive space that I really enjoy."
+          text: "I enjoy movie soundtracks (especially Zimmer's) and ambient music, It's about music without lyrics that emphasizes melody, atmosphere, and emotion. It creates a calm and immersive space that I really enjoy."
         }
       },
       {
@@ -109,10 +113,9 @@
         answer: "Grandma's one pot sardine sambal rice",
         image: "food.jpg",
         imageAlt: "Grandma’s one pot sardine sambal rice",
-        caption: "Grandma’s one pot sardine sambal rice 🍛",
         unlock: {
           title: "Favorite Food 🍛",
-          text: "My favorite food is Grandma’s one pot sardine sambal rice — spicy, comforting, and full of flavor. It’s the kind of meal that feels like home."
+          text: "My favorite food is Grandma’s one pot sardine sambal rice. It's spicy, comforting, and full of flavor. It’s the kind of meal that feels like home. Do you want the recipe? You can contact me!"
         }
       }
     ];
@@ -122,6 +125,7 @@
     const feedbackEl = document.getElementById("feedback");
     const nextBtn = document.getElementById("nextBtn");
     const tryAgainBtn = document.getElementById("tryAgainBtn");
+    const restartBtn = document.getElementById("restartBtn");
     const progressEl = document.getElementById("progress");
     const scoreEl = document.getElementById("score");
     const cardsEl = document.getElementById("cards");
@@ -132,8 +136,7 @@
 
     let idx = 0;
     let score = 0;
-    let unlocked = new Set(); // prevent duplicate cards
-    let currentOptions = [];
+    let unlocked = new Set();
 
     function shuffleArray(arr) {
       const a = [...arr];
@@ -144,18 +147,33 @@
       return a;
     }
 
+    function setButtonsMode(mode) {
+      // mode: "playing" | "complete"
+      if (mode === "complete") {
+        nextBtn.style.display = "none";
+        tryAgainBtn.style.display = "none";
+        restartBtn.style.display = "inline-flex";
+      } else {
+        nextBtn.style.display = "inline-flex";
+        tryAgainBtn.style.display = "inline-flex";
+        restartBtn.style.display = "none";
+      }
+    }
+
     function renderQuestion({ shuffle = true } = {}) {
       const item = questions[idx];
 
+      setButtonsMode("playing");
       nextBtn.disabled = true;
       tryAgainBtn.disabled = true;
+
       feedbackEl.textContent = "";
       qTitle.textContent = item.q;
       choicesEl.innerHTML = "";
 
-      currentOptions = shuffle ? shuffleArray(item.options) : [...item.options];
+      const opts = shuffle ? shuffleArray(item.options) : [...item.options];
 
-      currentOptions.forEach((opt) => {
+      opts.forEach((opt) => {
         const btn = document.createElement("button");
         btn.className = "choice";
         btn.type = "button";
@@ -203,7 +221,7 @@
           addCard(item.unlock.title, item.unlock.text);
         }
       } else {
-        // mark wrong choice only, keep others clickable
+        // mark wrong choice only
         [...choicesEl.children].forEach((b) => {
           if (b.textContent === selectedText) b.classList.add("wrong");
         });
@@ -218,7 +236,9 @@
       const card = document.createElement("div");
       card.className = "unlock-card";
       card.innerHTML = `<h3>${title}</h3><p>${text}</p>`;
-      cardsEl.appendChild(card);
+
+      // newest card goes to the TOP
+      cardsEl.prepend(card);
     }
 
     nextBtn.addEventListener("click", () => {
@@ -227,10 +247,18 @@
       if (idx >= questions.length) {
         qTitle.textContent = "🎉 Game Complete!";
         choicesEl.innerHTML = "";
+
+        feedbackEl.textContent =
+          `Final score: ${score}/${questions.length}. Thanks for learning about me!`;
+
+        progressEl.textContent =
+          `Progress: ${questions.length} / ${questions.length}`;
+
         nextBtn.disabled = true;
         tryAgainBtn.disabled = true;
-        feedbackEl.textContent = `Final score: ${score}/${questions.length}. Thanks for learning about me!`;
-        progressEl.textContent = `Progress: ${questions.length} / ${questions.length}`;
+
+        // show only Restart
+        setButtonsMode("complete");
         return;
       }
 
@@ -238,12 +266,30 @@
     });
 
     tryAgainBtn.addEventListener("click", () => {
-      // Shuffle options and retry the SAME question
+      renderQuestion({ shuffle: true });
+    });
+
+    restartBtn.addEventListener("click", () => {
+      idx = 0;
+      score = 0;
+      unlocked = new Set();
+
+      cardsEl.innerHTML = "";
+      feedbackEl.textContent = "";
+
+      // clear image panel
+      answerImg.src = "";
+      answerImg.alt = "";
+      answerImg.style.display = "none";
+      answerCaption.textContent = "";
+
+      setButtonsMode("playing");
       renderQuestion({ shuffle: true });
     });
 
     // Start
     answerImg.style.display = "none";
+    setButtonsMode("playing");
     renderQuestion({ shuffle: true });
   </script>
 
