@@ -8,22 +8,13 @@
 </head>
 <body>
 
+ 
   <nav class="navbar">
     <div class="nav-inner">
       <a class="brand" href="#home">Mervin Raja</a>
-
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
-      </button>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About Me</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
     </div>
   </nav>
+
 
   <section id="home" class="hero">
     <div class="hero-content">
@@ -33,7 +24,8 @@
       </p>
 
       <div class="hero-actions">
-        <a class="btn primary" href="#projects">See Projects</a>
+        <a class="btn ghost" href="#about">About Me</a>
+        <a class="btn ghost" href="#projects">See Projects</a>
         <a class="btn ghost" href="#contact">Contact Me</a>
       </div>
     </div>
@@ -42,15 +34,14 @@
   <main>
     <section id="about" class="card-section">
       <h2>About Me</h2>
-      <img src="mervin.png" alt="Photo of Mervin Raja" class="profile-pic" />
-      <h4>
-        I’m Mervin Raja, a Computer Science graduate passionate about mobile development,
-        backend systems, and software engineering. I enjoy creating applications and services
-        that bring together reliability, functionality, and user-friendly design.
-        With experience in IT Technical Support and a strong foundation in software development,
-        my goal is to grow as a Mobile and Backend Developer and contribute to building innovative
-        solutions that make a real impact.
-      </h4>
+        <img src="mervin.png" alt="Photo of Mervin Raja" class="profile-pic" />
+
+        <p style="color:#d0d6dc; line-height:1.7;">
+          <h2>Mervin Raja</h2>
+          Want to know more about me?
+        </p>
+
+      <a class="btn ghost" href="about.html">Click here</a>
     </section>
 
     <section id="projects" class="projects">
@@ -167,8 +158,9 @@
     <p>&copy; 2025 Mervin Raja. All rights reserved.</p>
   </footer>
 
+
   <script>
-    // Mobile nav toggle
+    /* Mobile nav toggle
     const toggle = document.querySelector(".nav-toggle");
     const links = document.querySelector(".nav-links");
 
@@ -198,7 +190,7 @@
     };
 
     window.addEventListener("scroll", setActive);
-    setActive();
+    setActive();*/
   </script>
 
 </body>

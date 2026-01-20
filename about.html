@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me | Mervin Raja</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main>
+    <section class="card-section about-game">
+      <div class="about-top">
+        <h1 style="margin:0;">About Me — Mini Game</h1>
+        <a class="small-link" href="index.html">← Back to Home</a>
+      </div>
+
+      <p class="about-sub">
+        Answer quick questions to unlock my story. Each correct answer reveals a new “card”.
+      </p>
+
+      <div class="game-panel">
+        <div class="game-hud">
+          <span id="progress">Progress: 0 / 5</span>
+          <span id="score">Score: 0</span>
+        </div>
+
+        <div id="quiz" class="quiz-box">
+          <h2 id="qTitle" class="q-title">Loading…</h2>
+          <div id="choices" class="choices"></div>
+          <p id="feedback" class="feedback" aria-live="polite"></p>
+
+          <div class="quiz-actions">
+            <button id="nextBtn" class="btn primary" disabled>Next</button>
+            <button id="tryAgainBtn" class="btn ghost" type="button" disabled>Try Again</button>
+          </div>
+        </div>
+
+        <!-- Image panel for correct answers -->
+        <div class="answer-visual" aria-live="polite">
+          <h2 class="visual-title">Unlocked Image</h2>
+          <img id="answerImg" class="answer-img" src="" alt="" />
+          <p id="answerCaption" class="visual-caption"></p>
+        </div>
+
+        <div class="unlock-area">
+          <h2 class="unlock-title">Unlocked About Me Cards</h2>
+          <div id="cards" class="unlock-cards"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Quiz: retry same question until correct + show image on correct answer
+    // Improvement: remove Restart, add Try Again (shuffles options for same question)
+    const questions = [
+      {
+        q: "Where am I from?",
+        options: ["India", "Malaysia", "Canada", "United States of America"],
+        answer: "Malaysia",
+        image: "malaysia.jpg",
+        imageAlt: "Malaysia",
+        caption: "Malaysia 🇲🇾",
+        unlock: {
+          title: "Malaysia 🇲🇾",
+          text: "Malaysia is a culturally rich and diverse country in Southeast Asia, known for its blend of modern cities, strong technology growth, and multicultural society. Growing up in Malaysia shaped my adaptability, problem-solving mindset, and appreciation for working with people from different backgrounds."
+        }
+      },
+      {
+        q: "What language(s) do I speak?",
+        options: ["English", "Tamil", "Malay", "All the above"],
+        answer: "All the above",
+        image: "languages.jpg",
+        imageAlt: "Languages",
+        caption: "English • Malay • Tamil",
+        unlock: {
+          title: "Languages I speak 🗣️",
+          text: "I speak English, Malay, and Tamil. Being multilingual helps me communicate effectively with people from diverse backgrounds and work comfortably in multicultural environments."
+        }
+      },
+      {
+        q: "What’s my favorite movie genre?",
+        options: ["Horror", "Romance", "Science Fiction", "Comedy"],
+        answer: "Horror",
+        image: "horror.jpg",
+        imageAlt: "Horror genre",
+        caption: "Horror 🎬",
+        unlock: {
+          title: "Favorite Movie Genre 🎬",
+          text: "My favorite movie genre is horror. I enjoy the suspense, atmosphere, and storytelling that keep you on edge and make you think beyond the obvious."
+        }
+      },
+      {
+        q: "What type of music do I enjoy the most?",
+        options: ["Pop music", "Heavy Metal", "Instrumental music", "No music at all"],
+        answer: "Instrumental music",
+        image: "instrumental.jpg",
+        imageAlt: "Instrumental music",
+        caption: "Instrumental & ambient 🎵",
+        unlock: {
+          title: "Favorite Music 🎵",
+          text: "I enjoy instrumental and ambient music — music without lyrics that emphasizes melody, atmosphere, and emotion. It creates a calm and immersive space that I really enjoy."
+        }
+      },
+      {
+        q: "What is my favorite food?",
+        options: ["Pizza", "Chicken curry", "Grandma's one pot sardine sambal rice", "Sushi"],
+        answer: "Grandma's one pot sardine sambal rice",
+        image: "food.jpg",
+        imageAlt: "Grandma’s one pot sardine sambal rice",
+        caption: "Grandma’s one pot sardine sambal rice 🍛",
+        unlock: {
+          title: "Favorite Food 🍛",
+          text: "My favorite food is Grandma’s one pot sardine sambal rice — spicy, comforting, and full of flavor. It’s the kind of meal that feels like home."
+        }
+      }
+    ];
+
+    const qTitle = document.getElementById("qTitle");
+    const choicesEl = document.getElementById("choices");
+    const feedbackEl = document.getElementById("feedback");
+    const nextBtn = document.getElementById("nextBtn");
+    const tryAgainBtn = document.getElementById("tryAgainBtn");
+    const progressEl = document.getElementById("progress");
+    const scoreEl = document.getElementById("score");
+    const cardsEl = document.getElementById("cards");
+
+    // Image panel elements
+    const answerImg = document.getElementById("answerImg");
+    const answerCaption = document.getElementById("answerCaption");
+
+    let idx = 0;
+    let score = 0;
+    let unlocked = new Set(); // prevent duplicate cards
+    let currentOptions = [];
+
+    function shuffleArray(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function renderQuestion({ shuffle = true } = {}) {
+      const item = questions[idx];
+
+      nextBtn.disabled = true;
+      tryAgainBtn.disabled = true;
+      feedbackEl.textContent = "";
+      qTitle.textContent = item.q;
+      choicesEl.innerHTML = "";
+
+      currentOptions = shuffle ? shuffleArray(item.options) : [...item.options];
+
+      currentOptions.forEach((opt) => {
+        const btn = document.createElement("button");
+        btn.className = "choice";
+        btn.type = "button";
+        btn.textContent = opt;
+        btn.addEventListener("click", () => choose(opt));
+        choicesEl.appendChild(btn);
+      });
+
+      progressEl.textContent = `Progress: ${idx + 1} / ${questions.length}`;
+      scoreEl.textContent = `Score: ${score}`;
+    }
+
+    function showAnswerVisual(item) {
+      if (!item.image) return;
+      answerImg.src = item.image;
+      answerImg.alt = item.imageAlt || "Unlocked image";
+      answerImg.style.display = "block";
+      answerCaption.textContent = item.caption || "";
+    }
+
+    function choose(selectedText) {
+      const item = questions[idx];
+      const correct = selectedText === item.answer;
+
+      // reset visual classes each click so they can retry
+      [...choicesEl.children].forEach((b) => b.classList.remove("correct", "wrong"));
+
+      if (correct) {
+        // mark chosen as correct and lock choices
+        [...choicesEl.children].forEach((b) => {
+          if (b.textContent === selectedText) b.classList.add("correct");
+          b.disabled = true;
+        });
+
+        score += 1;
+        scoreEl.textContent = `Score: ${score}`;
+        feedbackEl.textContent = "✅ Correct — card unlocked!";
+        nextBtn.disabled = false;
+        tryAgainBtn.disabled = true;
+
+        showAnswerVisual(item);
+
+        if (!unlocked.has(idx)) {
+          unlocked.add(idx);
+          addCard(item.unlock.title, item.unlock.text);
+        }
+      } else {
+        // mark wrong choice only, keep others clickable
+        [...choicesEl.children].forEach((b) => {
+          if (b.textContent === selectedText) b.classList.add("wrong");
+        });
+
+        feedbackEl.textContent = "❌ Not quite — click Try Again to shuffle and retry.";
+        nextBtn.disabled = true;
+        tryAgainBtn.disabled = false;
+      }
+    }
+
+    function addCard(title, text) {
+      const card = document.createElement("div");
+      card.className = "unlock-card";
+      card.innerHTML = `<h3>${title}</h3><p>${text}</p>`;
+      cardsEl.appendChild(card);
+    }
+
+    nextBtn.addEventListener("click", () => {
+      idx += 1;
+
+      if (idx >= questions.length) {
+        qTitle.textContent = "🎉 Game Complete!";
+        choicesEl.innerHTML = "";
+        nextBtn.disabled = true;
+        tryAgainBtn.disabled = true;
+        feedbackEl.textContent = `Final score: ${score}/${questions.length}. Thanks for learning about me!`;
+        progressEl.textContent = `Progress: ${questions.length} / ${questions.length}`;
+        return;
+      }
+
+      renderQuestion({ shuffle: true });
+    });
+
+    tryAgainBtn.addEventListener("click", () => {
+      // Shuffle options and retry the SAME question
+      renderQuestion({ shuffle: true });
+    });
+
+    // Start
+    answerImg.style.display = "none";
+    renderQuestion({ shuffle: true });
+  </script>
+
+</body>
+</html>
