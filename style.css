@@ -330,7 +330,35 @@ footer {
   pointer-events: none;
 }
 
-/* Project videos */
+/* =========================================
+   VIDEOS (NEW): keep videos inside the card
+   Usage:
+   <div class="video-wrapper">
+     <video controls playsinline preload="metadata">
+       <source src="demo.mp4" type="video/mp4">
+     </video>
+   </div>
+========================================= */
+.video-wrapper{
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.12);
+  margin-top: 0.6rem;
+}
+
+.video-wrapper video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain; /* use cover if you want it to fill/crop */
+}
+
+/* Project videos (legacy class - safe to keep) */
 .project-video {
   width: 100%;
   margin-top: 0.6rem;
@@ -448,7 +476,7 @@ footer {
   margin-top: 0.9rem;
 }
 
-/* NEW: Image panel (fills the empty space) */
+/* Image panel (bigger) */
 .answer-visual{
   background: rgba(0,0,0,0.20);
   border: 1px solid rgba(255,255,255,0.12);
@@ -458,7 +486,7 @@ footer {
   text-align: left;
   grid-column: 1;
   grid-row: 2;
-  min-height: 260px;
+  min-height: 420px; /* bigger space */
 }
 
 .visual-title{
@@ -468,7 +496,7 @@ footer {
 
 .answer-img{
   width: 100%;
-  height: 300px;
+  height: 340px;     /* bigger image */
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.12);
@@ -561,6 +589,11 @@ footer {
   .answer-visual{
     grid-column: 1;
     grid-row: auto;
+    min-height: 360px; /* still big on mobile */
+  }
+
+  .answer-img{
+    height: 260px; /* prevent crazy tall image on phones */
   }
 
   .unlock-area{
